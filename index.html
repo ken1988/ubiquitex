@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("jquery", "1");
+google.load("jqueryui", "1");
+</script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/editor.js"></script>
+
+<!-- Bootstrap -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="./css/theme.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+<nav>
+<button class="btn btn-primary" id="btn-search">Search
+  <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+<button class="btn btn-default" id="btn-search">Replace</button>
+<button class="btn btn-default" id="btn-search">Search</button>
+</nav>
+<div id="search_box">
+<form id="search_form" class="form-inline">
+	<div class="form-group">
+		<label for="search-word" class="ontrol-label">Search</label>
+		<input type="text"class="form-control" id="search-word">
+	</div>
+	<div class="form-group">
+		<label for="replace-word" class="control-label">Replace</label>
+		<input type="text"class="form-control" id="replace-word">
+	</div>
+
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" id="chkgrep">正規表現を使う
+		</label>
+	</div>
+</form>
+</div>
+</header>
+
+<div>
+	<textarea id="maintext"></textarea>
+  </div>
+</body>
+<footer>
+</footer>
+</html>
