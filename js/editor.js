@@ -1,27 +1,43 @@
 /**
  *
  */
- $(document).ready(function() {
-	 $('#search_box').hide();
-	 $('#btn-search').click(function(){
+$(document).ready(function() {
+	$('#search_box').hide();
+	$('#replace_box').hide();
 
-		 $('#search_box').show();
+	$('#btn-search').click(function() {
+		$('#replace_box').hide();
+		$('#search_box').toggle();
 
-		 var sword = $('#search-word').val();
-		 var reword = $('#replace-word').val();
-		 var text = $('#maintext').val();
+		$('#search_box').change(function() {
+			var sword = $('#search-word').val();
 
-		 if(sword.charCodeAt() == 92){
-			 alert(sword.charCodeAt());
-			 sword = '\n';
-		 }
-		 if(reword.charCodeAt() == 92){
-			 reword = '\n';
-		 }
+			$('#maintext').highlightTextarea({
+				words : {
+					color : '#FFD400',
+					words : sword,
+				},
+				debug : true
+			});
+		});
+	});
+	$('#btn-replace').click(function() {
+		$('#search_box').hide();
+		$('#replace_box').toggle();
+		$('#search_box').change(function() {
 
+			var sword = $('#search-word').val();
+			var reword = $('#replace-word').val();
+			var text = $('#maintext').val();
 
+			$('#maintext').highlightTextarea({
+				words : {
+					color : '#FFD400',
+					words : sword,
+				},
+			});
+			$('#maintext').val(text.replace(sword, reword));
+		});
+	});
 
-		 $('#maintext').val(text.replace(sword,reword));
-
-	 });
- });
+});
