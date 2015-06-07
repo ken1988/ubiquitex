@@ -1,6 +1,8 @@
 /**
- *
+ * 
  */
+
+
 $(document).ready(function() {
 	$('#search_box').hide();
 	$('#replace_box').hide();
@@ -8,36 +10,28 @@ $(document).ready(function() {
 	$('#btn-search').click(function() {
 		$('#replace_box').hide();
 		$('#search_box').toggle();
-
-		$('#search_box').change(function() {
-			var sword = $('#search-word').val();
-
-			$('#maintext').highlightTextarea({
-				words : {
-					color : '#FFD400',
-					words : sword,
-				},
-				debug : true
-			});
-		});
 	});
+	$('#search-word').change(function() {
+		var sword = $('#search-word').val();
+		$('#maintext').highlightTextarea('setWords', sword);
+		$('#maintext').highlightTextarea('enable');
+
+	});
+
 	$('#btn-replace').click(function() {
 		$('#search_box').hide();
 		$('#replace_box').toggle();
-		$('#search_box').change(function() {
-
-			var sword = $('#search-word').val();
-			var reword = $('#replace-word').val();
-			var text = $('#maintext').val();
-
-			$('#maintext').highlightTextarea({
-				words : {
-					color : '#FFD400',
-					words : sword,
-				},
-			});
-			$('#maintext').val(text.replace(sword, reword));
-		});
 	});
+	$('#replace-to').change(function() {
+		var sword = $('#replace-from').val();
+		var reword = $('#replace-to').val();
+		var text = $('#maintext').val();
 
+		$('#maintext').highlightTextarea('setWords', sword);
+		$('#maintext').highlightTextarea('enable');
+
+		regobj = new RegExp(sword,"ig");
+
+		$('#maintext').val(text.replace(regobj,reword));
+	});	
 });
